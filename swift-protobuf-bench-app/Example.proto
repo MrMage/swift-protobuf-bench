@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+message Wrapper1 {
+  Container container = 1;
+}
+
+message Wrapper1_Fast {
+  bytes container = 1;
+}
+
+message Container {
+  repeated Entry entry = 1;
+
+  message Entry {
+    double double1 = 1;
+
+    SubMessage message1 = 2;
+
+    message SubMessage {
+      sfixed64 int1 = 1;
+      double double1 = 2;
+      double double2 = 3;
+
+      int64 int2 = 4;
+
+      int64 int3 = 5;
+      int64 int4 = 6;
+
+      sfixed64 int5 = 7;
+      
+      Wrapper1_Fast extra = 8;
+    }
+  }
+  
+  Entry extra = 2;
+}
